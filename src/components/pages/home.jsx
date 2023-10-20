@@ -1,7 +1,7 @@
 import Base from "../Layout/Base";
 import Navbar from "../Fragments/Navbar";
-import Card from "../Fragments/Card";
-import React from "react";
+import CardList from "../Fragments/CardList";
+
 
 const data = [
   {
@@ -55,40 +55,12 @@ const data = [
     archived: false,
   },
 ];
-if (localStorage.getItem("notes") === null) {
+
+if (!localStorage.getItem("notes")) {
   localStorage.setItem("notes", JSON.stringify(data));
 }
-
 const notes = JSON.parse(localStorage.getItem("notes"));
 const notesUnarchived = notes.filter((item) => item.archived === false);
-
-function CardList(prop) {
-  const [notes, setNotes] = React.useState(prop.notes);
-
-  function handleDelete(id) {
-    const updatedNotes = notes.filter((item) => item.id !== id);
-    localStorage.setItem("notes", JSON.stringify(updatedNotes));
-    setNotes(updatedNotes);
-  }
-
-  return (
-    <div className="flex flex-wrap">
-      {notes.map((item) => (
-        <Card
-          key={item.id}
-          id={item.id}
-          title={item.title}
-          date={item.date}
-          time={item.time}
-          category={item.category}
-          content={item.content}
-          archived={item.archived}
-          onDelete={handleDelete}
-        />
-      ))}
-    </div>
-  );
-}
 
 export default function Home() {
   return (

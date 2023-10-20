@@ -1,36 +1,29 @@
 import Button from "../Elements/Button";
-import React from "react";
-
-
 
 export default function Card(prop) {
-  const { id, title, date, time, category, content,onDelete } = prop;
-  const [archived, setArchived] = React.useState(prop.archived);
+  const { id, title, date, time, category, content, onDelete, onArchive } =
+    prop;
 
   function handleArchive(id) {
-    console.log(id);
-    const notes = JSON.parse(localStorage.getItem("notes"));
-    notes.map((item) => {
-      if (item.id === id) {
-        item.archived = !archived;
-      }
-    });
-    localStorage.setItem("notes", JSON.stringify(notes));
-    setArchived(!archived);
+    onArchive(id,);
   }
   function handleDelete(id) {
-    onDelete(id)
-    
+    onDelete(id);
   }
 
   return (
     <div className="w-1/3 p-3">
       <div className=" bg-white rounded-lg shadow-lg p-6 border">
-        <div className="flex justify-between">
-          <h1 className="text-2xl font-bold text-slate-900">{title}</h1>
-          <Button className="bg-red-500 p-2" onClick={() => handleDelete(id)}>
-            <i className="fa-solid fa-trash"></i>
+        <div className="w-full flex justify-end">
+          <Button
+            className="text-zinc-400 text-lg"
+            onClick={() => handleDelete(id)}
+          >
+            x
           </Button>
+        </div>
+        <div className="flex">
+          <h1 className="text-2xl font-bold text-slate-900">{title}</h1>
         </div>
         <div className="flex gap-2">
           <span className="text-sm text-slate-400">{date}</span>
