@@ -1,4 +1,3 @@
-import SearchBar from "../Elements/SearchBar";
 import Button from "../Elements/Button";
 import LinkNavbar from "../Elements/LinkNavbar";
 
@@ -14,11 +13,10 @@ export default function Navbar() {
         </div>
         <div className="flex gap-8">
           <LinkNavbar text="Home" to="/" />
-          <LinkNavbar text="Archives" to="/" />
+          <LinkNavbar text="Archives" to="/archive" />
         </div>
       </div>
-      <div className="flex w-1/3 justify-center gap-8">
-        <SearchBar />
+      <div className="flex w-1/3 justify-end gap-8">
         <Button text="Profile">
           <i className="fa-solid fa-user"></i>
         </Button>

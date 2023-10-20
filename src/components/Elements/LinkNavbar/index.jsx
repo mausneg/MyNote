@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 export default function LinkNavbar(prop) {
   const { text, to = "/" } = prop;
   return (
-    <Link
+    <a
       className="text-slate-500 font-semibold text-lg hover:text-slate-400"
-      to={to}
+      href={to}
     >
       {text}
-    </Link>
+    </a>
   );
 }

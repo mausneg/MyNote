@@ -2,7 +2,6 @@ import Base from "../Layout/Base";
 import Navbar from "../Fragments/Navbar";
 import CardList from "../Fragments/CardList";
 
-
 const data = [
   {
     id: 1,
@@ -59,8 +58,6 @@ const data = [
 if (!localStorage.getItem("notes")) {
   localStorage.setItem("notes", JSON.stringify(data));
 }
-const notes = JSON.parse(localStorage.getItem("notes"));
-const notesUnarchived = notes.filter((item) => item.archived === false);
 
 export default function Home() {
   return (
@@ -75,7 +72,7 @@ export default function Home() {
             Organize, Collaborate, and Simplify Your Notes
           </h3>
         </div>
-        <CardList notes={notesUnarchived} />
+        <CardList archive={false} />
       </div>
     </Base>
   );

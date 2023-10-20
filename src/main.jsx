@@ -3,12 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/home";
+import Archive from "./components/pages/archive";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
   },
+  {
+    path: "/archive",
+    element: <Archive />,
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
