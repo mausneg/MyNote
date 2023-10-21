@@ -1,16 +1,27 @@
 import Button from "../Elements/Button";
 
 export default function Card(prop) {
-  const { id, title, date, time, category, content, onDelete, onArchive } =
-    prop;
+  const {
+    id,
+    title,
+    date,
+    time,
+    category,
+    content,
+    onDelete,
+    onArchive,
+    onEdit,
+  } = prop;
 
   function handleArchive(id) {
-    onArchive(id,);
+    onArchive(id);
   }
   function handleDelete(id) {
     onDelete(id);
   }
-
+  function handleEdit(id) {
+    onEdit(id);
+  }
   return (
     <div className="w-1/3 p-3">
       <div className=" bg-white rounded-lg shadow-lg p-6 border">
@@ -34,7 +45,7 @@ export default function Card(prop) {
           <p className="text-slate-500 mt-2 text-justify ">{content}</p>
         </div>
         <div className="flex gap-4 justify-start">
-          <Button className="bg-blue-600 p-2">
+          <Button className="bg-blue-600 p-2" onClick={() => handleEdit(id)}>
             <i className="fa-solid fa-edit"></i>
           </Button>
           <Button className="bg-blue-600 p-2" onClick={() => handleArchive(id)}>

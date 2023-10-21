@@ -1,5 +1,5 @@
 export default function Input(prop) {
-  const { type, placeholder, name, onChange } = prop;
+  const { type, placeholder, name, onChange, value } = prop;
   return (
     <input
       type={type}
@@ -7,6 +7,7 @@ export default function Input(prop) {
       className="border-2 w-full px-2 py-1 rounded mb-4"
       placeholder={placeholder}
       onChange={onChange}
+      value={value}
     />
   );
 }

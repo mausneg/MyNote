@@ -2,7 +2,7 @@ import Label from "./Label";
 import Input from "./Input";
 
 export default function InputLabel(prop) {
-  const { text, type, placeholder, htmlFor, onChange } = prop;
+  const { text, type, placeholder, htmlFor, onChange, value } = prop;
   return (
     <div className="w-full flex flex-col">
       <Label text={text} htmlFor={htmlFor} />
@@ -11,6 +11,7 @@ export default function InputLabel(prop) {
         placeholder={placeholder}
         name="htmlFor"
         onChange={onChange}
+        value={value}
       />
     </div>
   );

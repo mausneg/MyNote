@@ -84,6 +84,9 @@ export default function CardList(prop) {
     }
     setNotes(updateNotes);
   }
+  function handleEdit(id){
+    window.location.href = `/edit-note/${id}`;
+  }
   function handleAdd() {
     window.location.href = "/create-note";
   }
@@ -118,6 +121,7 @@ export default function CardList(prop) {
               archived={item.archived}
               onDelete={handleDelete}
               onArchive={handleArchive}
+              onEdit={handleEdit}
             />
           ))
         )}
