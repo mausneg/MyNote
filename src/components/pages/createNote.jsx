@@ -1,4 +1,4 @@
-import { InputForm } from "../Fragments/InputForm";
+import InputForm from "../Fragments/InputForm";
 import InputLayout from "../Layout/InputLayout";
 
 export default function CreateNote() {

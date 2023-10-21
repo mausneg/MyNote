@@ -40,7 +40,7 @@ export default function CardList(prop) {
     setNotes(updatedNotesUnarchived);
   }
 
-  function handleSortFilter({ search, sort, filter }) {
+  function handleSortFilter({ search, sort }) {
     const notes = JSON.parse(localStorage.getItem("notes")).filter(
       (item) => item.archived === archive
     );
@@ -52,21 +52,16 @@ export default function CardList(prop) {
       );
     } else updateNotes = notes;
 
-    updateNotes = updateNotes.filter((item) => {
-      if (filter === "All") return item;
-      else return item.category === filter;
-    });
-
     if (sort === "Date Asc") {
       updateNotes.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
         return dateA - dateB;
       });
     } else if (sort === "Date Desc") {
       updateNotes.sort((a, b) => {
-        const dateA = new Date(a.date);
-        const dateB = new Date(b.date);
+        const dateA = new Date(a.createdAt);
+        const dateB = new Date(b.createdAt);
         return dateB - dateA;
       });
     } else if (sort === "Title Asc") {
@@ -84,7 +79,7 @@ export default function CardList(prop) {
     }
     setNotes(updateNotes);
   }
-  function handleEdit(id){
+  function handleEdit(id) {
     window.location.href = `/edit-note/${id}`;
   }
   function handleAdd() {
@@ -114,11 +109,8 @@ export default function CardList(prop) {
               key={item.id}
               id={item.id}
               title={item.title}
-              date={item.date}
-              time={item.time}
-              category={item.category}
-              content={item.content}
-              archived={item.archived}
+              createdAt={item.createdAt}
+              body={item.body}
               onDelete={handleDelete}
               onArchive={handleArchive}
               onEdit={handleEdit}

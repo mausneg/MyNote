@@ -1,17 +1,8 @@
 import Button from "../Elements/Button";
+import { showFormattedDate } from "../../utils";
 
 export default function Card(prop) {
-  const {
-    id,
-    title,
-    date,
-    time,
-    category,
-    content,
-    onDelete,
-    onArchive,
-    onEdit,
-  } = prop;
+  const { id, title, createdAt, body, onDelete, onArchive, onEdit } = prop;
 
   function handleArchive(id) {
     onArchive(id);
@@ -37,12 +28,12 @@ export default function Card(prop) {
           <h1 className="text-2xl font-bold text-slate-900">{title}</h1>
         </div>
         <div className="flex gap-2">
-          <span className="text-sm text-slate-400">{date}</span>
-          <span className="text-sm text-slate-400">{time}</span>
-          <span className="text-sm text-slate-400">{category}</span>
+          <span className="text-sm text-slate-400">
+            {showFormattedDate(createdAt)}
+          </span>
         </div>
-        <div className="h-32">
-          <p className="text-slate-500 mt-2 text-justify ">{content}</p>
+        <div className="card-body my-4">
+          <p className="text-slate-500 text-justify ">{body}</p>
         </div>
         <div className="flex gap-4 justify-start">
           <Button className="bg-blue-600 p-2" onClick={() => handleEdit(id)}>

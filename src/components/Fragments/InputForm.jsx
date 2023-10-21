@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import InputLabel from "../Elements/InputLabel";
-import Select from "../Elements/Select";
 import Button from "../Elements/Button";
 
-export function InputForm() {
-  const values = ["Personal", "Work", "Ideas", "Finance"];
+export default function InputForm() {
   const [id, setId] = useState("");
   const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [category, setCategory] = useState("Personal");
-  const [content, setContent] = useState("");
+  const [createdAt, setCreatedAt] = useState("");
+  const [body, setBody] = useState("");
   const [archived, setArchived] = useState(false);
   const { id: noteId } = useParams();
 
@@ -22,16 +18,13 @@ export function InputForm() {
 
       setId(note.id);
       setTitle(note.title);
-      setDate(note.date);
-      setTime(note.time);
-      setCategory(note.category);
-      setContent(note.content);
+      setBody(note.body);
+      setCreatedAt(note.createdAt);
       setArchived(note.archived);
     } else {
       const current = new Date();
       setId(current.getTime());
-      setDate(current.toLocaleDateString());
-      setTime(current.toLocaleTimeString());
+      setCreatedAt(current);
     }
   }, [noteId]);
 
@@ -39,12 +32,8 @@ export function InputForm() {
     setTitle(e.target.value);
   }
 
-  function handleContent(e) {
-    setContent(e.target.value);
-  }
-
-  function handleCategory(e) {
-    setCategory(e.target.value);
+  function handleBody(e) {
+    setBody(e.target.value);
   }
 
   function handleSave() {
@@ -56,10 +45,8 @@ export function InputForm() {
         notes[editedNoteIndex] = {
           id,
           title,
-          date,
-          time,
-          category,
-          content,
+          createdAt,
+          body,
           archived,
         };
       }
@@ -67,10 +54,8 @@ export function InputForm() {
       const note = {
         id,
         title,
-        date,
-        time,
-        category,
-        content,
+        createdAt,
+        body,
         archived,
       };
       notes.push(note);
@@ -99,17 +84,8 @@ export function InputForm() {
         placeholder="Insert your note's content"
         required={true}
         className="w-full border-2 h-40 border-gray-200 rounded-lg px-3 py-2 focus:outline-slate-200 font-semibold text-slate-500 my-2 placeholder:text-slate-400 placeholder:opacity-100 placeholder:font-normal"
-        onChange={handleContent}
-        value={content}
-      />
-      <label htmlFor="category" className="text-slate-500 font-semibold">
-        Category
-      </label>
-      <Select
-        values={values}
-        className="w-full my-2"
-        onChange={handleCategory}
-        value={category}
+        onChange={handleBody}
+        value={body}
       />
       <Button
         text={noteId ? "Save Note" : "Create Note"}

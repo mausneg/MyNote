@@ -1,5 +1,5 @@
 import InputLayout from "../Layout/InputLayout";
-import { InputForm } from "../Fragments/InputForm";
+import InputForm from "../Fragments/InputForm";
 
 export default function EditNote() {
   return (
