@@ -2,6 +2,10 @@ import Button from "../Elements/Button";
 import LinkNavbar from "../Elements/LinkNavbar";
 
 export default function Navbar() {
+  function handleProfile() {
+    const url = "https://mausneg.github.io/my-portfolio/";
+    window.open(url, "_blank");
+  }
   return (
     <div className="bg-slate-50 w-full flex justify-between px-6 py-6">
       <div className="flex w-2/3 items-center gap-16">
@@ -17,7 +21,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="flex w-1/3 justify-end gap-8">
-        <Button text="Profile">
+        <Button text="Profile" onClick={handleProfile}>
           <i className="fa-solid fa-user"></i>
         </Button>
       </div>

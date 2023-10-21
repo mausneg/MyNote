@@ -9,6 +9,7 @@ export default function Button(prop) {
     <button
       className={`font-bold text-md text-white rounded-lg ${className} flex items-center gap-2`}
       onClick={handleClick}
+      
     >
       {children}
       {text}
