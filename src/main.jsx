@@ -4,6 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/home";
 import Archive from "./components/pages/archive";
+import CreateNote from "./components/pages/createNote";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,11 @@ const router = createBrowserRouter([
   {
     path: "/archive",
     element: <Archive />,
-  }
+  },
+  {
+    path: "/create-note",
+    element: <CreateNote />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

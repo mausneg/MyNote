@@ -1,5 +1,4 @@
-import Base from "../Layout/Base";
-import Navbar from "../Fragments/Navbar";
+import BaseLayout from "../Layout/BaseLayout";
 import CardList from "../Fragments/CardList";
 
 const data = [
@@ -61,19 +60,11 @@ if (!localStorage.getItem("notes")) {
 
 export default function Home() {
   return (
-    <Base>
-      <Navbar />
-      <div className="p-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">
-            MyNote - Your Digital Notebook
-          </h1>
-          <h3 className="text-xl font-bold text-blue-600">
-            Organize, Collaborate, and Simplify Your Notes
-          </h3>
-        </div>
-        <CardList archive={false} />
-      </div>
-    </Base>
+    <BaseLayout
+      title="MyNote - Your Digital Notebook"
+      subtitle="Organize, Collaborate, and Simplify Your Notes"
+    >
+      <CardList archive={false} />
+    </BaseLayout>
   );
 }

@@ -1,7 +1,7 @@
 export default function Label(prop) {
-  const { text, type } = prop;
+  const { text, htmlFor } = prop;
   return (
-    <label htmlFor={type} className="font-semibold mb-2">
+    <label htmlFor={htmlFor} className="font-semibold mb-2 text-slate-500">
       {text}
     </label>
   );

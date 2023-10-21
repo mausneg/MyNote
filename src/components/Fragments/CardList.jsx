@@ -1,6 +1,7 @@
 import Card from "./Card";
 import React from "react";
 import SortFilter from "./SortFilter";
+import Button from "../Elements/Button";
 
 export default function CardList(prop) {
   const { archive } = prop;
@@ -83,30 +84,44 @@ export default function CardList(prop) {
     }
     setNotes(updateNotes);
   }
+  function handleAdd() {
+    window.location.href = "/create-note";
+  }
 
   return (
-    <div className="flex flex-wrap">
-      <SortFilter sortFilter={handleSortFilter} />
-      {notes.length === 0 ? (
-        <div className="text-xl font-bold text-slate-500 text-center w-full">
-          No Notes Found
-        </div>
-      ) : (
-        notes.map((item) => (
-          <Card
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            date={item.date}
-            time={item.time}
-            category={item.category}
-            content={item.content}
-            archived={item.archived}
-            onDelete={handleDelete}
-            onArchive={handleArchive}
-          />
-        ))
-      )}
-    </div>
+    <>
+      <div className="w-full flex justify-end mb-4 px-3">
+        <SortFilter sortFilter={handleSortFilter} />
+        <Button
+          text="Create note"
+          className="bg-blue-600 px-3 py-2"
+          onClick={handleAdd}
+        >
+          <i className="fa-solid fa-plus text-white"></i>
+        </Button>
+      </div>
+      <div className="flex flex-wrap">
+        {notes.length === 0 ? (
+          <div className="text-xl font-bold text-slate-500 text-center w-full">
+            No Notes Found
+          </div>
+        ) : (
+          notes.map((item) => (
+            <Card
+              key={item.id}
+              id={item.id}
+              title={item.title}
+              date={item.date}
+              time={item.time}
+              category={item.category}
+              content={item.content}
+              archived={item.archived}
+              onDelete={handleDelete}
+              onArchive={handleArchive}
+            />
+          ))
+        )}
+      </div>
+    </>
   );
 }

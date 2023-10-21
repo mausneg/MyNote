@@ -12,7 +12,6 @@ export default function SortFilter(prop) {
 
   function handleSearch(e) {
     setSearch(e.target.value);
-    console.log(search);
   }
   function handleSort(e) {
     setSort(e.target.value);
@@ -25,7 +24,7 @@ export default function SortFilter(prop) {
   }, [search, sort, filter]);
 
   return (
-    <div className="w-full flex justify-end mb-4 px-3 gap-4">
+    <div className="flex px-3 gap-4">
       <SearchBar onChange={handleSearch} />
       <Select values={sortValues} onChange={handleSort} />
       <Select values={filterValues} onChange={handleFilter} />
